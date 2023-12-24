@@ -56,5 +56,3 @@ num1=num2=num3=2+2
 //links to study..
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Increment
 // https://tc39.es/ecma262/#sec-ordinarytoprimitive
-
-
