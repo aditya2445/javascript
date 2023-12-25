@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chai Aur Code||Dom</title>
+</head>
+<body style="background-color: #212121; color: #fff;">
+    <ul class="language">
+        <li>JavaScript</li>
+    </ul>
+</body>
+<script>
+    function addLanguage(langName){
+        const li=document.createElement('li')
+        li.innerHTML=`${langName}`
+        const ul=document.querySelector('.language')
+        ul.appendChild(li)
+    }
+    addLanguage("python")
+    addLanguage("java")
+    //since every new language it getting added as a last node so for large number of nodes it may take time to avoid this lets create another function in a optimised way
+
+    function addOptiLanguage(langName){
+        const li=document.createElement('li');
+        li.appendChild(document.createTextNode(langName))
+        document.querySelector('.language').appendChild(li)
+    }
+    addOptiLanguage("golang")
+    //here also we are doing the same work but using innerHTML in above case traverses the whole tree but using textnode its bit optimized
+
+    //Edit
+    const secondLang=document.querySelector("li:nth-child(2)")
+    // secondLang.innerHTML="NodeJS"//less optimised
+    const newLi=document.createElement('li')
+    newLi.textContent="Mojo"//here you can do via creating a text node and appending
+    secondLang.replaceWith(newLi);
+
+    //edit
+    const firstLang=document.querySelector("li:first-child")
+    firstLang.outerHTML='<li>TypeScript</li>'
+
+    //remove
+    const lastLang=document.querySelector("li:last-child")
+    lastLang.remove();//it removes the last node...
+</script>
+</html>
