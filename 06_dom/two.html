@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM|Chai Aur Code</title>
+</head>
+<body style="background-color: black;color:white">
+    <div class="parent">
+        <div class="day">Monday</div>
+        <div class="day">Tuesday</div>
+        <div class="day">Wednesday</div>
+        <div class="day">Thursday</div>
+    </div>
+</body>
+<script>
+    const parent=document.querySelector('.parent')
+    console.log(parent);//returns the div tag and its 4 inside divs
+    console.log(parent.children);//returns a HTML collection
+    console.log(parent.children[1].innerHTML);
+    parent.children[1].style.color='yellow';
+    console.log(parent.firstElementChild);//parent to child
+    console.log(parent.lastElementChild);//parent to child
+
+    //child to parent
+    const dayOne=document.querySelector('.day');
+    // console.log(dayOne);
+    // console.log(dayOne.parentElement);
+    // console.log(dayOne.nextElementSibling);
+
+    console.log("NODES: ",parent.childNodes);//returns a nodelist with 9 nodes i.e 4 divs and 5 text nodes test means you have clicked the enter button also it counts comment as a node
+
+    
+    
+</script>
+</html>
