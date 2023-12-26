@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Events</title>
+</head>
+<body style="background-color: #414141; color: aliceblue;">
+    <h2>Amazing image</h2>
+    <div >
+        <ul id="images">
+            <li><img width="200px" id="photoshop" src="https://images.pexels.com/photos/3561339/pexels-photo-3561339.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt="photoshop"></li>
+            <li><img width="200px" id="japan" src="https://images.pexels.com/photos/3532553/pexels-photo-3532553.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+            <li><img width="200px" id="river" src="https://images.pexels.com/photos/3532551/pexels-photo-3532551.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+            <li><img width="200px" id="owl" src="https://images.pexels.com/photos/3532552/pexels-photo-3532552.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt="" ></li>
+            <li><img width="200px" id="prayer" src="https://images.pexels.com/photos/2522671/pexels-photo-2522671.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+            <li><a style="color: aliceblue;" href="https://google.com" id="google">Google</a></li>
+        </ul>
+   </div>
+</body>
+<script>
+    // method 1 using on click method
+    // document.getElementById('owl').onclick=function(){
+    //     alert("owl clicked")
+    // }
+
+    // method 2 using browsing events
+    // document.getElementById('owl').addEventListener('click',function(){
+    //     alert("Owl clicked again")
+    // },false)//addEventListener has 3 params named event type,function and the last false/true which is false bydefault
+    
+    //some more methods...
+    //attachEvent
+    //jQuery
+
+    //what to read among all the events...
+    //type(keyboaard keys,mouse movements etc),timestamp,preventdefault,target,toElement,srcElement,currentTarget
+    //clientX,clientY,screenX,screenY
+    //altkey,ctrlkey,shiftkey,keycode
+
+    //true/false is called i.e, the third parameter is known as event propagation 
+    //event propagation has 2 contexts 1.Event bubbling(false) 2.Event Capturing(true)
+
+    // document.getElementById('images').addEventListener('click',function(){
+    //     alert("clicked inside the ul")
+    // },false)
+
+    // document.getElementById('owl').addEventListener('click',function(e){
+    //     alert("owl clicked")
+    //     e.stopPropagation();
+    // },false)
+
+    // //since owl is inside the ul so there arises 2 alerts for owl 1.owl clicked and 2.clicked inside the ul here comes the role of event propagation since both are false so bubbling mode here in bubbling mode 'owl clicked' comes 1st then comes 'clicked inside the ul' if you set the 3rd arguement of both true then propagation goes to capturing mode where 'clicked inside the ul' comes 1st and then 'owl clicked'
+    // // bubbling mode goes from bottom to top while on the other hand capturing mode goes from top to bottom
+    // //e.stopPropagation() will stop the propagation from further going to up level in bubbling mode or coming down to low level in capturing mode.
+    // document.getElementById('google').addEventListener('click',function(e){
+    //     e.preventDefault();
+    //     alert("google clicked")
+    //     e.stopPropagation()
+    // },false)
+
+    //mini project
+    document.getElementById('images').addEventListener('click',function(e){
+        // console.log(e.target);//e.target gives you <img width="200px" id="prayer" src="https://images.pexels.com/photos/2522671/pexels-photo-2522671.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1600&amp;lazy=load" alt=""> but we need the li tag which has to be removed
+        console.log(e.target.parentNode);//it gives the li tag 
+        if(e.target.tagName==='IMG'){
+            let removeIt=e.target.parentNode
+            removeIt.remove();//method 1 for remove
+        }
+    },false)
+    //methode 2 for removing
+    // removeIt.parentNode.removeChild(removeIt)
+    </script>
+</html>
