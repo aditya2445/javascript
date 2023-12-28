@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body style="background-color:#212121; color:#fff;">
+    <div class="class">
+
+    </div>
+    <!-- Value	State	            Description
+    0	    UNSENT	            Client has been created. open() not called yet.
+    1	    OPENED	            open() has been called.
+    2	    HEADERS_RECEIVED	send() has been called, and headers and status are available.
+    3	    LOADING	            Downloading; responseText holds partial data.
+    4	    DONE	            The operation is complete. -->
+</body>
+<script>
+    // write the code acc.to the steps above
+    const requestUrl='https://api.github.com/users/hiteshchoudhary';
+    const xhr=new XMLHttpRequest();
+    xhr.open('GET',requestUrl);
+    let data;
+    xhr.onreadystatechange=function(){
+        console.log(xhr.readyState);//it prints 1. but we want to track all the changes so for that use on readystatechange
+        if(xhr.readyState===4){
+            data=JSON.parse(this.response);//here if you check typeof data it will show you that data is of type string
+            console.log(data);//if data is in string format then here in output you will get undefined as a output in console.in order to get actual output we have to convert the data of string type to JSON format.
+        }
+        const imgurl=data.avatar_url;
+        document.querySelector('.class').innerHTML=`<img style="border-radius:50%" src=${imgurl} alt="photo"></img>`
+        document.querySelector('.class').append(document.createElement('p'));
+        document.querySelector('p').innerHTML=`Followers count is ${data.followers}`
+        console.log(imgurl);
+    }
+    xhr.send();//request sent
+</script>
+</html>
